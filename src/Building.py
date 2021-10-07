@@ -1,9 +1,12 @@
+
+
+
 class Building():
-    def __init__(self,listArea):
+    def __init__(self, ):
         """
         """
     
-        self.__listArea= listArea
+        self.__listElements= []
         
 
     def getLenArea(self):
