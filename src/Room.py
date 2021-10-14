@@ -1,6 +1,6 @@
-from Area import Area
+from ElementaryArea import ElementaryArea
 
-class Room(Area):
+class Room(ElementaryArea):
     
     def getSurface(self):
-        
+        pass
