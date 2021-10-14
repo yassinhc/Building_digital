@@ -3,9 +3,9 @@ import sys
 sys.path.append('..')
 
 from src import Building
-#from Building import Building
 
 import unittest
+
 
 
 class Test_Building(unittest.TestCase):
