@@ -11,8 +11,12 @@ class Coordinate():
 
     def gety(self):
         return self.__y
-
-    def getLength(self,coordinate):
+    def getVector(self,coordinate): #from self to coordinate
         X=coordinate.getx()-self.getx()
         Y=coordinate.gety()-self.gety()
-        return sqrt(X**2+Y**2)
+        return(np.array([[X,Y]]))
+    def getLength(self,coordinate):
+       vector= getVector(self,coordinate)
+       return(sqrt(vector[0]**2 + vector[1]**2)) #norm of the vector 
+    
+    
