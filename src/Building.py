@@ -1,13 +1,16 @@
 class Building():
-    def __init__(self,listArea):
+    def __init__(self,listElement):
         """
         """
     
-        self.__listArea= listArea
+        self.__listElement= listElement
         
 
-    def getLenArea(self):
-        return len(self.__listArea)
+    def getLenElement(self):
+        return len(self.__listElement)
          
-    def getListArea(self):
-        return self.__listArea
+    def getListElement(self):
+        return self.__listElement
+    
+    def addElement(self,element):
+        self.__listElement.append(element)
