@@ -3,20 +3,20 @@ Please copy the content of this form to your own repository and tick ([X]) the b
 
 # Git
 
-[ ] I use git to store (only) the source code of my project.
+[X] I use git to store (only) the source code of my project.
 
-[ ] I configured the git `.ignore` file.
+[X] I configured the git `.ignore` file.
 
-[ ] I made a commit per atomic change to the file of the project. Example:
+[X] I made a commit per atomic change to the file of the project. Example: after creating this file we commited
 
-[ ] I use meaningful commit message by following guidelines. Example:
+[X] I use meaningful commit message by following guidelines. Example: after updating this file we committed
 
-[ ] Both me and my pair are contributing to a shared repository.
+[X] Both me and my pair are contributing to a shared repository.
 
 
 # Python programming
 
-[ ] I use object-oriented Python to develop my project. 
+[X] I use object-oriented Python to develop my project. 
 
 [ ] I document the code of my project.
 
@@ -25,7 +25,7 @@ Please copy the content of this form to your own repository and tick ([X]) the b
 
 # Test-driven development
 
-[ ] I include some tests with my project. 
+[X] I include some tests with my project. 
 
 [ ] My tests cover all the source code developed.
 
@@ -34,6 +34,6 @@ Please copy the content of this form to your own repository and tick ([X]) the b
 
 # Software architecture
 
-[ ] I follow the clean code rules. 
+[X] I follow the clean code rules. 
 
-[ ] I use and document some design patterns in my project. Examples
+[X] I use and document some design patterns in my project. Examples: composite pattern in Area class with Subarea 
