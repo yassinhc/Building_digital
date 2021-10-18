@@ -1,8 +1,5 @@
 from abc import ABC
 
-import sys
-
-sys.path.append('..')
 
 
 class Element(ABC):
