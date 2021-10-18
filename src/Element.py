@@ -10,7 +10,7 @@ class Element:
         self.__coordinates = (Coordinate(x1, y1), Coordinate(x2, y2))
         
     def getCoordinate(self):
-        return self.__coordinates[0].getCoordinate(), self.__coordinates[1].getCoordinate()
+        return self.__coordinates
     
     def getLength(self):
         first_coord = self.getCoordinate()[0]
