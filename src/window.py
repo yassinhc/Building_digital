@@ -1,4 +1,8 @@
+
+
+
 from src.Element import Element
 
 class Window(Element):
-    pass 
+    def __init__(self):
+        pass

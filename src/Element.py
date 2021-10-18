@@ -1,5 +1,10 @@
 from abc import ABC
 
+import sys
+
+sys.path.append('..')
+
+
 class Element(ABC):
     
     def __init__(self,coordinates):
