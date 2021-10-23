@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Oct  8 14:36:21 2021
-
-@author: user
-"""
 
 
 import numpy as np
@@ -40,6 +34,11 @@ class Test_Building(unittest.TestCase):
         coordinate2 = coordinate.Coordinate(3,0)
         self.assertTrue(coordinate1.isAfter(coordinate2))
         
+    def test_on_the_line(self):
+        coordinate1 = coordinate.Coordinate(1,0)
+        coordinate2 = coordinate.Coordinate(3,0)
+        coo = coordinate.Coordinate(2,0)
+        self.assertTrue(coordinate1.onTheLine(coordinate2,coo))
 
 if __name__ == '__main__':
     unittest.main()

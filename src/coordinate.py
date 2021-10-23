@@ -26,6 +26,8 @@ class Coordinate():
         Return the length of two coordinate
     isAfter(coordinate):
         Return True if the coordinate is after our current coordinate.
+    onTheLine(coordiante,coo):
+        Return true if coo belong to the segment of self coordinate and coordiante
     """
     
     def __init__(self,x,y):
@@ -95,4 +97,23 @@ class Coordinate():
         '''
         return coordinate.getx() >= self.getx() and coordinate.gety() >= self.gety()
     
+    def onTheLine(self,coordinate,coo):
+        '''
+        Parameters
+        ----------
+        coordinate : Coordinate
+            The coordinate that we will use to create the line with self coordinate
+        coo : Coordinate
+            The coordiante we use to check if it is on the line or not
+
+        Returns
+        -------
+        TYPE : Boolean
+            return true if coo belong to the segment of self coordinate and coordiante
+        '''
+        X,Y = self.getVector(coordinate)
+        assert(X!=0)
+        a = Y/X
+        b = self.gety()-a*self.getx()
+        return coo.gety() == a*coo.getx()+b
     
