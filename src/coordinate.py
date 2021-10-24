@@ -112,7 +112,8 @@ class Coordinate():
             return true if coo belong to the segment of self coordinate and coordiante
         '''
         X,Y = self.getVector(coordinate)
-        assert(X!=0)
+        if X == 0:
+            return coo.getx() == self.getx()
         a = Y/X
         b = self.gety()-a*self.getx()
         return coo.gety() == a*coo.getx()+b
