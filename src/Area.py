@@ -8,11 +8,11 @@ class Area(ABC):
         self.__listElement=listElement
         super().__init__()
         
-        def getListElement(self):
+    def getListElement(self):
             return self.__listElement
         
-        @abstractmethod
-        def getSurface(self):
+    @abstractmethod
+    def getSurface(self):
             pass
         
         

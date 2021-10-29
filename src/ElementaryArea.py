@@ -6,7 +6,7 @@ Created on Thu Oct 14 11:58:34 2021
 """
 from abc import ABC
 
-from Area import Area
+from src.Area import Area
 
 class ElementaryArea(Area,ABC):
-        pass
+    pass

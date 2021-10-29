@@ -1,12 +1,17 @@
-from ElementaryArea import ElementaryArea
+from src.ElementaryArea import ElementaryArea
 
+# supposed that the Room are rectangle or square
 class Room(ElementaryArea):
-
-    #on suppose que les
+    
     def getSurface(self): 
-        Longueurs=[element.getLenght() for element in self.getListElement() if element.getLenght() not in Longueurs] #c'est un rectangle,on récupère les deux longueurs diff si ce n'est pas un carré.
-        if len(Longueurs) == 1: #C'est un carré
-            return self.getListElement()[0].getLenght()**2
+        Longueurs = [self.getListElement()[0].getLength()]
+        
+        for element in self.getListElement():
+            if element.getLength() not in Longueurs:
+                Longueurs.append(element.getLength())
+        
+        if len(Longueurs) == 1: #It's a square
+            return Longueurs[0]**2
         else: return Longueurs[0]*Longueurs[1]
         
 
