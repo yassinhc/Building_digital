@@ -17,14 +17,14 @@ class Wall(Element):
         return self.__vector 
     
     
-    def addWindow(window):
+    def addWindow(self,window):
         self.__listWindow.append(window)
     
-    def addDoor(door):
+    def addDoor(self,door):
         self.__listDoor.append(door)
         
     def getListWindow(self):
         return self.__listWindow
     
-    def getLitDoor(self):
+    def getListDoor(self):
         return self.__listDoor
