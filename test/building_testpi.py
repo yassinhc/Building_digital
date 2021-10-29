@@ -1,10 +1,18 @@
 import unittest
 
+<<<<<<< HEAD
 #import sys
 #sys.path.append('..')
 import os
 print(os.getcwd())
 import src.Building as Building
+=======
+import sys
+sys.path.append('..')
+
+from src import Building
+>>>>>>> main
+
 
 
 

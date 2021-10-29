@@ -1,15 +1,20 @@
-from src.Element import Element
 
-class Area:
-
-    def __init__(self, list_elem = None):
-        self.__list_elements = list_elem
+from abc import ABC, abstractmethod
 
 
-    def getListElements(self):
-        return self.__list_elements
 
-    def getNbElements(self):
-        return len(self.getListElements())
-
+class Area(ABC):
+    
+    def __init__(self,listElement):
+        self.__listElement=listElement
+        super().__init__()
+        
+        def getListElement(self):
+            return self.__listElement
+        
+        @abstractmethod
+        def getSurface(self):
+            pass
+        
+        
     

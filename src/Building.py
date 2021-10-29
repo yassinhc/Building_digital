@@ -2,21 +2,18 @@
 import src.Element as Element
 
 class Building():
-    def __init__(self, listElements):
+    def __init__(self,listElement):
         """
         """
     
-        self.__listElements= listElements
-        
+        self.__listElement= listElement
 
-    def getLenArea(self):
-        return len(self.__listArea)
+    def getLenElement(self):
+        return len(self.__listElement)
          
-    def getElements(self):
-        return self.__listElements
+    def getListElement(self):
+        return self.__listElement
     
-    def addElement(self, x1, y1, x2, y2):
-        self.__listElements.append(Element.Element(x1, y1, x2, y2))
-        
+    def addElement(self,element):
+        self.__listElement.append(element)
 
-        
