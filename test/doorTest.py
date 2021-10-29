@@ -23,7 +23,6 @@ class Test_Wall(ElementTest,unittest.TestCase):
         
     
     def test_length(self):
-        
         length = self.element.getLength()
         self.assertEqual(length, 10)
         
