@@ -1,8 +1,12 @@
 
 if __name__ == "__main__":
+
 	import matplotlib.pyplot as plt
 	import library.generate_element as generate_element
 	import library.drawing as drawing
+	import numpy as np
+	import library.convex_hull as convex_hull
+	
 
 	import sys
 	sys.path.append('..') 
@@ -75,5 +79,32 @@ if __name__ == "__main__":
 	
 	door8 = generate_element.generate_door(wall12, [8, 8, 9, 8])
 	door9 = generate_element.generate_door(wall9, [2, 8, 3, 8])
-	
+
+	# drawing the building 
 	drawing.draw_building(b)
+
+	# testing convex hull of some points 
+	# a visitor is within a certain area defined by some points in the space if and only if : 
+	# the convex_hull (points without the visitor) == convex_hull (points with the visitor)
+	
+	number_points = 7
+	points = np.random.randint(1, 11, size = (number_points, 2))
+	cv_hull = np.array(convex_hull.convex_hull(points))
+
+
+	# choose a random position of a visitor 
+	visitor = np.random.randint(1, 11, size = (1,2 ))[0]
+
+	# the visitor is marked as a red dot on the plot 
+	plt.plot(visitor[0], visitor[1], 'r*', markeredgewidth = 5 )
+
+	# plotting convex hull 
+	plt.plot(cv_hull[:, 0], cv_hull[:, 1], 'y:')
+	plt.scatter(cv_hull[:, 0], cv_hull[:, 1], color = 'orange')
+	
+	plt.grid(linewidth=0.1)
+	plt.legend()
+	plt.show()
+
+
+
