@@ -9,7 +9,14 @@ Created on Fri Oct  8 14:05:45 2021
 """
 
 import unittest
-
+#list of elements
+import src.door as door
+import src.window as window
+import src.Wall as Wall
+#coordinates of elements
+import src.coordinate as Coordinate
+#test of elements
+from elementTest import ElementTest
 import sys
 sys.path.append('..')
 
@@ -26,11 +33,17 @@ class AreaTest(ABC):
     @abstractmethod
     def createArea(self):
         pass
-    
+    @abstractmethod
+    def getSurface(self):
+        pass
+    @abstractmethod
+    def getListElement(self):
+        pass
+
         
         
         
         
         
-#if __name__ == '__main__':
- #   unittest.main()
+if __name__ == '__main__':
+     unittest.main()
