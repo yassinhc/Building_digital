@@ -77,7 +77,7 @@ class Coordinate():
 
         Returns
         -------
-        TYPE : Integer
+        TYPE : Float
             return the length between two coordinates
         '''
         vector= self.getVector(coordinate)
