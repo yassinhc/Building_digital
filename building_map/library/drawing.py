@@ -1,6 +1,6 @@
 
 import matplotlib.pyplot as plt
-import generate_element
+import library.generate_element as generate_element
 
 
 import sys
