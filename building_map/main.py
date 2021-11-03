@@ -13,14 +13,21 @@ if __name__ == "__main__":
 
 	import src.Building as Building
 	import src.Floor as Floor
+	import src.SubArea as SubArea
 
 	# creating a building and a floor 
 	floor = Floor.Floor([])
 	building = Building.Building([])
 	building.addFloor(floor)
 
-	# ------- generating walls --------
-	# outer walls of the building
+	# -------------------------------------------------------------------------------------------------------
+	# 			Creating a building of one floor containing some elememnts (walls, doors, windows)
+	# -------------------------------------------------------------------------------------------------------
+
+
+
+	# 	------- generating walls : we use generate_element module to simply the creation of elements -------- 
+	# outer walls of the floor
 	wall1 = generate_element.generate_wall([0, 0, 12, 0])
 	wall2 = generate_element.generate_wall([12, 0, 12, 12])
 	wall3 = generate_element.generate_wall([12, 12, 0, 12])
@@ -44,8 +51,9 @@ if __name__ == "__main__":
 	wall11 = generate_element.generate_wall([7, 8, 7, 12])
 	wall12 = generate_element.generate_wall([7, 8, 12, 8])
 	
+
 	
-	# adding walls to the building
+	#  --- adding walls to the building ---
 	floor.addElement(wall1)
 	floor.addElement(wall2)
 	floor.addElement(wall3)
@@ -64,7 +72,9 @@ if __name__ == "__main__":
 	floor.addElement(wall13)
 	floor.addElement(wall14)
 
-    # generating windows
+
+
+    # -------- generating windows --------
 	window1 = generate_element.generate_window(wall4, [0, 2, 0, 3])
 	window2 = generate_element.generate_window(wall4, [0, 5, 0, 6])
 	
@@ -75,7 +85,8 @@ if __name__ == "__main__":
 	window6 = generate_element.generate_window(wall2, [12, 5, 12, 6])
 	
 	
-	#generating doors
+
+	# -------- generating doors --------
 	door1 = generate_element.generate_door(wall1, [4.5, 0, 6.5, 0])
 	door2 = generate_element.generate_door(wall6, [4, 2, 4, 3])
 	door3 = generate_element.generate_door(wall6, [4, 5, 4, 6])
@@ -89,31 +100,73 @@ if __name__ == "__main__":
 	door8 = generate_element.generate_door(wall12, [8, 8, 9, 8])
 	door9 = generate_element.generate_door(wall9, [2, 8, 3, 8])
 
-	# drawing the building 
+
+	#  ---- drawing the building ----- 
 	drawing.draw_floor(floor)
 
-	# testing convex hull of some points 
+
+
+
+	# ------------------------------------------------------------------------------------------------------
+	# 				Asserting if a visitor is within some subArea (defined by some walls)
+	# ------------------------------------------------------------------------------------------------------
+
+
+	# ------ creating subArea ------
+	sub_area = SubArea.SubArea([])
+
+
+	# -------- list of elements(walls) for subArea --------
+	wall_sub1 = generate_element.generate_wall([2, 7, 8, 1])
+	wall_sub2 = generate_element.generate_wall([1, 5, 6, 4])
+	wall_sub3 = generate_element.generate_wall([10, 6, 9, 3])
+
+
+	# ------ Adding Elements to subArea ------
+	sub_area.addElement(wall_sub1)
+	sub_area.addElement(wall_sub2)
+	sub_area.addElement(wall_sub3)
+	
+
+	# ---- get cloud of points defining subArea ----
+	points = sub_area.getPoints()
+
+
+
+	#  ---------------- testing convex hull of some points ----------------
 	# a visitor is within a certain area defined by some points in the space if and only if : 
 	# the convex_hull (points without the visitor) == convex_hull (points with the visitor)
-	
-	number_points = 7
-	points = np.random.randint(0, 13, size = (number_points, 2))
 	cv_hull = np.array(convex_hull.convex_hull(points))
 
 
-	# choose a random position of a visitor 
+	# ----- choose a random position for a visitor -----
 	visitor = np.random.randint(0, 13, size = (1,2 ))[0]
 
-	# the visitor is marked as a red dot on the plot 
-	plt.plot(visitor[0], visitor[1], 'r*', markeredgewidth = 5 )
 
-	# plotting convex hull 
+	#  ----- plot position of the visitor ----- 
+	plt.plot(visitor[0], visitor[1], 'r*', markeredgewidth = 5 )          # visitor == red dot on the 2D plan
+
+	
+	# --------- testing  if the visitor is within the given subArea ----- 
+	points_with_visitor = np.append(points, [visitor], axis = 0)          # new cloud of points = subArea points + visitor
+
+	newcv_hull = np.array(convex_hull.convex_hull(points_with_visitor))	  # new convex_hull
+	print(newcv_hull)
+	print(cv_hull)
+	print("The visitor is with the subArea? --> "+ str(newcv_hull.shape == cv_hull.shape 
+				and (newcv_hull == cv_hull).all()))
+	print(newcv_hull.shape == cv_hull.shape and (newcv_hull == cv_hull).all())
+
+
+
+	# ------- plotting convex hull ------ 
 	plt.plot(cv_hull[:, 0], cv_hull[:, 1], 'y:')
 	plt.scatter(cv_hull[:, 0], cv_hull[:, 1], color = 'orange')
 	
+
 	plt.grid(linewidth=0.1)
-	
 	plt.show()
+	
 
 
 

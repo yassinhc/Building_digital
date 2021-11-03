@@ -12,7 +12,7 @@ sys.path.append('..')
 
     
 def draw_element(element, color, marker = '', linewidth = 1 , label = ''):
-    """Plots an element on a 2D plan, with doors and windows
+    """Plots an element on a 2D plan 
 
     Parameters
     ----------
