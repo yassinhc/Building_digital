@@ -34,10 +34,10 @@ class AreaTest(ABC):
     def createArea(self):
         pass
     @abstractmethod
-    def getSurface(self):
+    def test_getSurface(self):
         pass
     @abstractmethod
-    def getListElement(self):
+    def test_getListWalls(self):
         pass
 
         

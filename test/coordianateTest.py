@@ -13,17 +13,17 @@ import unittest
 
 class Test_Building(unittest.TestCase):
     
-    def test_coordinates_length(self):
+    def test_getLenght(self):
         coordinate1 = coordinate.Coordinate(0,1)
         coordinate2 = coordinate.Coordinate(0,0)
         nb = coordinate1.getLength(coordinate2)
         self.assertEqual(nb,1)
     
-    def test_coordinate_x_y(self):
+    def test_getx_gety(self):
         coordinate2 = coordinate.Coordinate(1,-2)
         self.assertTrue(coordinate2.getx()==1 and coordinate2.gety()==(-2))
                 
-    def test_vector(self):
+    def test_getVector(self):
         coordinate1 = coordinate.Coordinate(1,1)
         coordinate2 = coordinate.Coordinate(3,0)
         vect = coordinate1.getVector(coordinate2)
@@ -34,7 +34,7 @@ class Test_Building(unittest.TestCase):
         coordinate2 = coordinate.Coordinate(3,0)
         self.assertTrue(coordinate1.isAfter(coordinate2))
         
-    def test_on_the_line(self):
+    def test_onTheline(self):
         coordinate1 = coordinate.Coordinate(1,0)
         coordinate2 = coordinate.Coordinate(3,0)
         coo = coordinate.Coordinate(2,0)

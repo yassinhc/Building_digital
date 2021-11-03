@@ -12,7 +12,7 @@ import src.coordinate as Coordinate
 from elementTest import ElementTest
 
 
-class Test_Wall(ElementTest,unittest.TestCase):
+class Test_Door(ElementTest,unittest.TestCase):
     
     
     def createElement(self):        
@@ -22,7 +22,7 @@ class Test_Wall(ElementTest,unittest.TestCase):
         return element
         
     
-    def test_length(self):
+    def test_getLength(self):
         length = self.element.getLength()
         self.assertEqual(length, 10)
         
