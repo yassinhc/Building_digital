@@ -112,7 +112,6 @@ if __name__ == "__main__":
     number_points = 20
     points = np.random.randint(1, 100, size = (number_points, 2))
     cv_hull = np.array(convex_hull(points))
-)
 
     plt.scatter(points[:, 0], points[:, 1])
     plt.plot(cv_hull[:, 0], cv_hull[:, 1], c = "r")
