@@ -9,8 +9,8 @@ class Area():
     
     Attributes
     ----------
-    listElement : list of Elements
-        The list of elements disigning the area
+    listWall : list of Walls
+        The list of walls disigning the area
     
     Methods
     -------
@@ -19,18 +19,18 @@ class Area():
     getSurface():
         Return the surface of an element
     """
-    def __init__(self,listElement):
-        self.__listElement=listElement
+    def __init__(self,ListWalls):
+        self.__ListWalls=ListWalls
         super().__init__()
         
-    def getListElement(self):
+    def getListWalls(self):
         '''
         Returns
         -------
-        TYPE List of Elements
-            return the list of elements designing the area
+        TYPE List of Walls
+            return the list of walls designing the area
         '''
-        return self.__listElement
+        return self.__ListWalls
         
     @abstractmethod
     def getSurface(self):

@@ -4,9 +4,9 @@ from src.ElementaryArea import ElementaryArea
 class Room(ElementaryArea):
     
     def getSurface(self): 
-        Longueurs = [self.getListElement()[0].getLength()]
+        Longueurs = [self.getListWalls()[0].getLength()]
         
-        for element in self.getListElement():
+        for element in self.getListWalls():
             if element.getLength() not in Longueurs:
                 Longueurs.append(element.getLength())
         

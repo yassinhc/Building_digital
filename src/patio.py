@@ -10,16 +10,22 @@ from math import sqrt
 class Patio(ElementaryArea): #4 murs d'angles qqc
 
     def getAngle(self): #retourne une liste des angles entre chaque mur contigus , on suppose les murs triés selon leur contiguité
+        '''
+        Returns
+        -------
+        TYPE : List of floats
+            return a list of angles between each walls designing the patio
+        '''
         angles=[]
-        for i in range(0,len(self.getListElement())-1):
-            mur1=self.getListElement()[i].getVector()
-            mur2=self.getListElement()[i+1].getVector()
+        for i in range(0,len(self.getListWalls())-1):
+            mur1=self.getListWalls()[i].getVector()
+            mur2=self.getListWalls()[i+1].getVector()
             angle= np.arccos((mur1[0]*mur2[0]+mur1[1]*mur2[1])/(LA.norm(mur1)*LA.norm(mur2)))
             angles.append(angle)
         return angles
     
     def getSurface(self): #Bretschweider formula
-        L=[i.getLength() for i in self.getListElement()]
+        L=[i.getLength() for i in self.getListWalls()]
         a,b,c,d=L[0],L[1],L[2],L[3]
         s=(a+b+c+d)/2
         angles=self.getAngle()

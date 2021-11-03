@@ -20,7 +20,7 @@ class Coordinate():
         Get the abscissa of the coordinate.
     gety():
         Get the ordinate of the coordinate.
-    getVecor(coordinate):
+    getVector(coordinate):
         Return the vector from current coordinate to the new one.
     getLength(coordinate):
         Return the length of two coordinate
@@ -39,7 +39,7 @@ class Coordinate():
         Returns
         -------
         TYPE Integer
-            return the abscissa of a coordiante
+            return the abscissa of a coordinate
         '''
         return self.__x
 
@@ -48,7 +48,7 @@ class Coordinate():
         Returns
         -------
         TYPE Integer
-            return the ordinate of a coordiante
+            return the ordinate of a coordinate
         '''
         return self.__y
     
@@ -56,7 +56,7 @@ class Coordinate():
         '''
         Parameters
         ----------
-        coordinate : Coordiante
+        coordinate : Coordinate
             The coordinate to compute the Vector with
 
         Returns
@@ -72,7 +72,7 @@ class Coordinate():
         '''
         Parameters
         ----------
-        coordinate : Coordiante
+        coordinate : Coordinate
             The coordinate to compute the length with
 
         Returns
@@ -88,12 +88,12 @@ class Coordinate():
         Parameters
         ----------
         coordinate : Coordinate
-            The coordiante to comapre if it is after our current coordinate or not
+            The coordiante to compare if it is after our current coordinate or not
 
         Returns
         -------
         TYPE : Boolean
-            return true if coordiante is after our current coordinate
+            return true if coordinate is after our current coordinate
         '''
         return coordinate.getx() >= self.getx() and coordinate.gety() >= self.gety()
     
@@ -109,7 +109,7 @@ class Coordinate():
         Returns
         -------
         TYPE : Boolean
-            return true if coo belong to the segment of self coordinate and coordiante
+            return true if coo belong to the segment of self coordinate and coordinate
         '''
         X,Y = self.getVector(coordinate)
         if X == 0:
