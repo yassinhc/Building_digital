@@ -7,7 +7,7 @@ import sys
 sys.path.append('..') 
 
 
-import src.Building as Building 
+#import src.Floor as Floor 
 
 
     
@@ -28,32 +28,34 @@ def draw_element(element, color, marker = '', linewidth = 1 , label = ''):
     p1 = (element.getCoordinates()[1].getx(), element.getCoordinates()[1].gety())
     x0, x1 = p0[0], p1[0]
     y0, y1 = p0[1], p1[1]
-    #print((x0, x1), (y0, y1))
+
     element_plot = plt.Line2D((x0, x1), (y0, y1), lw=linewidth, c = color, marker=marker, 
                                 markeredgewidth = 0.3, markeredgecolor=color, label = label)
     return element_plot
 
 
 
-def draw_building(building):
-    """Plots the building on the basis of its list of elements 
+def draw_floor(floor):
+    """Plots the floor on the basis of its list of elements 
 
     Parameters
     ----------
-    building : 
-        Building Object
+    floor : 
+        floor Object
 
     """
     plt.figure(figsize=(7,7))
-    if building.getLenElement():
-        for wall in building.getListElement():
+    if floor.getLenElement():
+        for wall in floor.getListElement():                    # drawing walls
             plt.gca().add_line(draw_element(wall,'grey'))
-            if len(wall.getListWindow()):
+
+            if len(wall.getListWindow()):                       # drawing windows
                 for window in wall.getListWindow():
-                    plt.gca().add_line(draw_element(window,'deepskyblue', marker = '$\u27E1$', linewidth = 2.5, label="window"))
-            if len(wall.getListDoor()):
+                    plt.gca().add_line(draw_element(window,'deepskyblue', marker = '$\u27E1$', linewidth = 2.5))
+
+            if len(wall.getListDoor()):                         # drawing doors
                 for door in wall.getListDoor():
                     plt.gca().add_line(draw_element(door,'darkred', marker = '$\u27E1$' , linewidth =2.5))
     plt.axis('scaled')
-    #plt.show()
+    
             

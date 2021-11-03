@@ -95,7 +95,7 @@ def reinit_centroids(clusters, k, X):
     """
     new_centroids = np.zeros(shape = (k, 2))  
     for j in range(k):
-        current_cluster = np.array([X[i] for i in range(X.shape[0]) if clusters[i] == j])   # points belonging to the j-th cluster
+        current_cluster = np.array([X[i] for i in range(X.shape[0]) if clusters[i] == j])      # points belonging to the j-th cluster
         cluster_mean = np.mean(current_cluster, axis = 0)                                      # computing the mean point of the cluster's points
         new_centroids[j] = cluster_mean
     return new_centroids
