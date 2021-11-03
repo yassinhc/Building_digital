@@ -106,7 +106,6 @@ def convex_hull(points):
     """
     anchor_point = lowest_coordinate(points)         # anchor point
     sorted_points = sort_angle(points)               # sorting points with respect to the polar angle
-
     
     cv_hull = [anchor_point, sorted_points[0]]       # initial convex_hull 
 
