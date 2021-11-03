@@ -24,6 +24,21 @@ def lowest_coordinate(points):
 
 
 def polar_angle(p0, p1):
+    """returns the polar angle between 2 points (2 vectors)
+
+    Parameters
+    ----------
+    p0 : numpy array of 1D 
+        1st point
+    p1 : numpy array of 1D 
+        2nd point
+
+    Returns
+    -------
+    float : 
+        - polar angle between p0, p1 if not horitontal
+        - -10. otherwise
+    """
     y_span=p0[1]-p1[1]
     x_span=p0[0]-p1[0]
     if round(atan2(y_span,x_span), 2) == 3.14:     # used to fix special case of 2 points that are horizontal
