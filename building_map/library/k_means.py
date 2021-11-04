@@ -2,7 +2,13 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-import library.convex_hull as convex_hull
+
+from scipy.interpolate import make_interp_spline, BSpline
+
+
+
+import building_map.library.convex_hull as convex_hull
+
 
 
 # X : the input should be a number of points  (the path of visitors in the building)
@@ -132,46 +138,17 @@ def plot_clusters(X, k, iter):
 
     pt_classes = dict()                                                  # dictinary of points fitting into each cluster 
 
-    for j, c in zip(range(k), color):
+    for j in range(k):
         pt_classes[j] = np.array([X[i] for i in range(X.shape[0]) if clos_cent[i]==j])
-        plt.scatter(pt_classes[j][:, 0], pt_classes[j][:, 1], color = c, marker = '.')
-        c_hull = np.array(convex_hull.convex_hull(pt_classes[j]))
-        plt.plot(c_hull[:, 0], c_hull[:, 1], color = c, marker = ',')      # draw convex hull
 
-    plt.scatter(init_cent[:, 0], init_cent[:, 1], color = 'black')       # plotting final centroids 
-
-
-
-if __name__ == "__main__":
-    import random
-    import numpy as np
-    import matplotlib.pyplot as plt 
-
-    # ----- params -----
-    k = 3                   # number of clusters 
-    iter = 8                # number of iterattions
     
+    for j, c in zip(range(k), color):
+        #pt_classes[j] = np.array([X[i] for i in range(X.shape[0]) if clos_cent[i]==j])
+        rate = round(pt_classes[j].shape[0]/X.shape[0], 2)
+        plt.scatter(pt_classes[j][:, 0], pt_classes[j][:, 1], color = c, marker = '.', alpha=0.3)
+        
+        c_hull = np.array(convex_hull.convex_hull(pt_classes[j]))
 
-    # ----- random points generation ----- 
-    nb_samples = 100 
-
-    low = [1, 1]
-    high = [10, 10]
-    X0 = np.random.default_rng().uniform(low, high, size = (nb_samples, 2))     # 1st list of points generated using uniform distribution 
-
-    mean1 = [3, 3]
-    cov1 = [[3, 0], [0, 3]]
-    X1 = np.random.default_rng().multivariate_normal(mean1, cov1, nb_samples)   # 2nd list of points using multivariate_normal distribution
-
-    mean2 = [7, 7]
-    cov2 = [[1, 0], [0, 1]]
-    X2 = np.random.default_rng().multivariate_normal(mean2, cov2, nb_samples)   # 3rd list of points using multivariate_normal distribution
-
-    X = np.append(X0, X1, axis = 0)           # concatenating the  list of points
-    X = np.append(X, X2, axis = 0)
+        plt.plot(c_hull[:, 0], c_hull[:, 1], color = c, marker = ',', label = 'rate of visits : '+str(rate))      # draw convex hull
 
 
-    # ----- plotting the clusters -----
-    plot_clusters(X, k, iter)                 # computing and plotting the clusters of points 
-
-    plt.show()

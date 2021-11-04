@@ -1,10 +1,11 @@
 
 import matplotlib.pyplot as plt
-import library.generate_element as generate_element
+
 
 
 import sys
-sys.path.append('..') 
+#sys.path.append('..') 
+import building_map.library.generate_element as generate_element 
 
 
 #import src.Floor as Floor 
@@ -44,18 +45,18 @@ def draw_floor(floor):
         floor Object
 
     """
-    plt.figure(figsize=(7,7))
+    plt.figure(figsize=(10,7))
     if floor.getLenElement():
         for wall in floor.getListElement():                    # drawing walls
-            plt.gca().add_line(draw_element(wall,'grey'))
+            plt.gca().add_line(draw_element(wall,'grey', label = 'Walls'))
 
             if len(wall.getListWindow()):                       # drawing windows
                 for window in wall.getListWindow():
-                    plt.gca().add_line(draw_element(window,'deepskyblue', marker = '$\u27E1$', linewidth = 2.5))
+                    plt.gca().add_line(draw_element(window,'deepskyblue', marker = '$\u27E1$', linewidth = 2.5, label = 'Windows'))
 
             if len(wall.getListDoor()):                         # drawing doors
                 for door in wall.getListDoor():
-                    plt.gca().add_line(draw_element(door,'darkred', marker = '$\u27E1$' , linewidth =2.5))
+                    plt.gca().add_line(draw_element(door,'darkred', marker = '$\u27E1$' , linewidth =2.5, label = 'Doors'))
     plt.axis('scaled')
     
             

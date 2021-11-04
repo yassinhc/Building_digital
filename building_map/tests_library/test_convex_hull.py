@@ -9,6 +9,7 @@ sys.path.append('..')
 import library.convex_hull as convex_hull
 
 
+
 class Test_Convex_Hull(unittest.TestCase):
 
     def test_anchor_point(self):
