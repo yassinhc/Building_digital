@@ -2,6 +2,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
+import library.convex_hull as convex_hull
 
 
 # X : the input should be a number of points  (the path of visitors in the building)
@@ -101,6 +102,7 @@ def reinit_centroids(clusters, k, X):
     return new_centroids
 
 
+
 def plot_clusters(X, k, iter): 
     """ Clusters points in X into k clusters using iter-nb of iterations and plots the clusters  
 
@@ -111,7 +113,12 @@ def plot_clusters(X, k, iter):
     k : int 
         number of clusters
     iter : int
-        number of iterations 
+        number of iterations
+
+    Returns
+    -------
+    dict
+        final clusters : points belonging to each cluster
     """
     init_cent = initializing_centroids(X, k)                             # initializing centroids
     clos_cent = closest_centroids(init_cent, X)                          # closest centroids ot each point
@@ -128,6 +135,8 @@ def plot_clusters(X, k, iter):
     for j, c in zip(range(k), color):
         pt_classes[j] = np.array([X[i] for i in range(X.shape[0]) if clos_cent[i]==j])
         plt.scatter(pt_classes[j][:, 0], pt_classes[j][:, 1], color = c, marker = '.')
+        c_hull = np.array(convex_hull.convex_hull(pt_classes[j]))
+        plt.plot(c_hull[:, 0], c_hull[:, 1], color = c, marker = ',')      # draw convex hull
 
     plt.scatter(init_cent[:, 0], init_cent[:, 1], color = 'black')       # plotting final centroids 
 
@@ -162,7 +171,7 @@ if __name__ == "__main__":
     X = np.append(X, X2, axis = 0)
 
 
-    # ----- plotting -----
+    # ----- plotting the clusters -----
     plot_clusters(X, k, iter)                 # computing and plotting the clusters of points 
 
     plt.show()

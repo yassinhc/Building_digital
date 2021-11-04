@@ -6,6 +6,7 @@ if __name__ == "__main__":
 	import library.drawing as drawing
 	import numpy as np
 	import library.convex_hull as convex_hull
+	import library.k_means as k_means
 	
 
 	import sys
@@ -101,17 +102,6 @@ if __name__ == "__main__":
 	door9 = generate_element.generate_door(wall9, [2, 8, 3, 8])
 
 
-	#  ---- drawing the building ----- 
-	drawing.draw_floor(floor)
-
-
-
-
-	# ------------------------------------------------------------------------------------------------------
-	# 				Asserting if a visitor is within some subArea (defined by some walls)
-	# ------------------------------------------------------------------------------------------------------
-
-
 	# ------ creating subArea ------
 	sub_area = SubArea.SubArea([])
 
@@ -133,39 +123,102 @@ if __name__ == "__main__":
 
 
 
-	#  ---------------- testing convex hull of some points ----------------
-	# a visitor is within a certain area defined by some points in the space if and only if : 
-	# the convex_hull (points without the visitor) == convex_hull (points with the visitor)
-	cv_hull = np.array(convex_hull.convex_hull(points))
+	while True : 
+		# -------- choosing what to visualize --------
+		print("  Pick one option:")
+		print("			1: Assert a visitor is within a certain area?")
+		print("			2: Heat-map of the floor?")
+		print("			3: Exit")
+		user_choice = input()
 
 
-	# ----- choose a random position for a visitor -----
-	visitor = np.random.randint(0, 13, size = (1,2 ))[0]
+		# ------------------------------------------------------------------------------------------------------
+		# 				Asserting if a visitor is within some subArea (defined by some walls)
+		# ------------------------------------------------------------------------------------------------------
+
+		if int(user_choice) == 1:
+			#  ---------------- testing convex hull of some points ----------------
+			# a visitor is within a certain area defined by some points in the space if and only if : 
+			# the convex_hull (points without the visitor) == convex_hull (points with the visitor)
+			cv_hull = np.array(convex_hull.convex_hull(points))
 
 
-	#  ----- plot position of the visitor ----- 
-	plt.plot(visitor[0], visitor[1], 'r*', markeredgewidth = 5 )          # visitor == red dot on the 2D plan
+			# ----- choose a random position for a visitor -----
+			visitor = np.random.randint(0, 13, size = (1,2 ))[0]
 
-	
-	# --------- testing  if the visitor is within the given subArea ----- 
-	points_with_visitor = np.append(points, [visitor], axis = 0)          # new cloud of points = subArea points + visitor
 
-	newcv_hull = np.array(convex_hull.convex_hull(points_with_visitor))	  # new convex_hull
-	print(newcv_hull)
-	print(cv_hull)
-	print("The visitor is with the subArea? --> "+ str(newcv_hull.shape == cv_hull.shape 
-				and (newcv_hull == cv_hull).all()))
-	print(newcv_hull.shape == cv_hull.shape and (newcv_hull == cv_hull).all())
+			# --------- testing  if the visitor is within the given subArea ----- 
+			points_with_visitor = np.append(points, [visitor], axis = 0)          # new cloud of points = subArea points + visitor
+
+			newcv_hull = np.array(convex_hull.convex_hull(points_with_visitor))	  # new convex_hull
+			print("			The visitor is within the subArea? --> "+ str(newcv_hull.shape == cv_hull.shape 
+						and (newcv_hull == cv_hull).all()))
 
 
 
-	# ------- plotting convex hull ------ 
-	plt.plot(cv_hull[:, 0], cv_hull[:, 1], 'y:')
-	plt.scatter(cv_hull[:, 0], cv_hull[:, 1], color = 'orange')
-	
+			# -------------- drawings  -------------
+			drawing.draw_floor(floor)                         # draw floor
+			plt.plot(cv_hull[:, 0], cv_hull[:, 1], 'y:')      # draw convex hull
+			plt.plot(visitor[0], visitor[1], 'r*', markeredgewidth = 5 )          # visitor's position == red dot on the 2D plan
+			plt.scatter(cv_hull[:, 0], cv_hull[:, 1], color = 'orange')
+			
 
-	plt.grid(linewidth=0.1)
-	plt.show()
+			plt.grid(linewidth=0.1)
+			plt.xlim([0, 12])
+			plt.ylim([0, 12])
+			plt.show()
+
+
+		# ------------------------------------------------------------------------------------------------------
+		# 		Drawing clusters of a given area (for the purpose of the example, the area is the whole floor) 
+		# ------------------------------------------------------------------------------------------------------
+
+		elif int(user_choice) ==2 : 
+
+			# ----- params -----
+			k = 3                   # number of clusters
+			iter = 8                # number of iterattions
+		
+
+			# ----- random points generation : random visited locations by visitors -----
+			# ------ FEEL FREE TO CHANGE !  ------
+			nb_samples = 100
+			
+			
+			low = [1, 1]
+			high = [10, 10]
+			X0 = np.random.default_rng().uniform(low, high, size = (nb_samples, 2))     # 1st list of points generated using uniform distribution 
+			
+			mean1 = [3, 3]
+			cov1 = [[3, 0], [0, 3]]
+			X1 = np.random.default_rng().multivariate_normal(mean1, cov1, nb_samples)   # 2nd list of points using multivariate_normal distribution
+			
+			mean2 = [7, 7]
+			cov2 = [[1, 0], [0, 1]]
+			X2 = np.random.default_rng().multivariate_normal(mean2, cov2, nb_samples)   # 3rd list of points using multivariate_normal distribution
+			
+			
+			X = np.append(X0, X1, axis = 0)           # concatenating the  list of points
+			X = np.append(X, X2, axis = 0)
+			
+			
+			# ----- plotting -----
+			drawing.draw_floor(floor) 
+			k_means.plot_clusters (X, k, iter)        # computing and plotting the clusters of points 
+		
+
+			plt.xlim([-0.5, 12.5])
+			plt.ylim([-0.5, 12.5])
+			plt.show()
+
+
+
+		elif int(user_choice) ==3:
+			print("See you later ...")
+			break
+			
+		else  :
+			print("Please pick from the set of choices (1 or 2)!")
 	
 
 
