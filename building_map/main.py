@@ -2,16 +2,18 @@
 if __name__ == "__main__":
 
 	import matplotlib.pyplot as plt
+
+	import sys
+	
+	
 	import library.generate_element as generate_element
 	import library.drawing as drawing
 	import numpy as np
 	import library.convex_hull as convex_hull
 	import library.k_means as k_means
 	
-
-	import sys
-	sys.path.append('..') 
-
+ 
+	sys.path.append('..')
 	import src.Building as Building
 	import src.Floor as Floor
 	import src.SubArea as SubArea
