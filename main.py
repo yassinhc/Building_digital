@@ -2,15 +2,14 @@
 if __name__ == "__main__":
 
 	import matplotlib.pyplot as plt
-
+	
 	import sys
-	
-	
-	import library.generate_element as generate_element
-	import library.drawing as drawing
+
+	import building_map.library.generate_element as generate_element
+	import building_map.library.drawing as drawing
 	import numpy as np
-	import library.convex_hull as convex_hull
-	import library.k_means as k_means
+	import building_map.library.convex_hull as convex_hull
+	import building_map.library.k_means as k_means
 	
  
 	sys.path.append('..')
@@ -129,7 +128,7 @@ if __name__ == "__main__":
 		# -------- choosing what to visualize --------
 		print("  Pick one option:")
 		print("			1: Assert a visitor is within a certain area?")
-		print("			2: Heat-map of the floor?")
+		print("			2: Clusters of the floor?")
 		print("			3: Exit")
 		user_choice = input()
 
@@ -160,14 +159,20 @@ if __name__ == "__main__":
 
 			# -------------- drawings  -------------
 			drawing.draw_floor(floor)                         # draw floor
-			plt.plot(cv_hull[:, 0], cv_hull[:, 1], 'y:')      # draw convex hull
-			plt.plot(visitor[0], visitor[1], 'r*', markeredgewidth = 5 )          # visitor's position == red dot on the 2D plan
+			plt.plot(cv_hull[:, 0], cv_hull[:, 1], 'y:', label = 'subArea')      # draw convex hull
+			plt.plot(visitor[0], visitor[1], 'r*', markeredgewidth = 5, label = 'visitor' )          # visitor's position == red dot on the 2D plan
 			plt.scatter(cv_hull[:, 0], cv_hull[:, 1], color = 'orange')
 			
 
 			plt.grid(linewidth=0.1)
-			plt.xlim([0, 12])
-			plt.ylim([0, 12])
+			plt.xlim([-0.5, 12.5])
+			plt.ylim([-0.5, 12.5])
+
+			handles, labels = plt.gca().get_legend_handles_labels()
+			by_label = dict(zip(labels, handles))
+			plt.legend(by_label.values(), by_label.keys(), bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+			plt.title("2D Map of the Floor")
+			
 			plt.show()
 
 
@@ -187,11 +192,11 @@ if __name__ == "__main__":
 			nb_samples = 100
 			
 			
-			low = [1, 1]
-			high = [10, 10]
+			low = [3, 3]
+			high = [8, 8]
 			X0 = np.random.default_rng().uniform(low, high, size = (nb_samples, 2))     # 1st list of points generated using uniform distribution 
 			
-			mean1 = [3, 3]
+			mean1 = [5, 5]
 			cov1 = [[3, 0], [0, 3]]
 			X1 = np.random.default_rng().multivariate_normal(mean1, cov1, nb_samples)   # 2nd list of points using multivariate_normal distribution
 			
@@ -211,7 +216,15 @@ if __name__ == "__main__":
 
 			plt.xlim([-0.5, 12.5])
 			plt.ylim([-0.5, 12.5])
+
+			handles, labels = plt.gca().get_legend_handles_labels()
+			by_label = dict(zip(labels, handles))
+			plt.legend(by_label.values(), by_label.keys(), bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+			plt.title("2D Map of the Floor")
+
 			plt.show()
+
+
 
 
 
