@@ -26,7 +26,7 @@ class Element(ABC):
         '''
         Returns
         -------
-        TYPE : Integer
+        TYPE : Tuple(Coordinate)
             Return the two coordinates designing the element.
         '''
         return self.__coordinates

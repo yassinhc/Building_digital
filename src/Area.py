@@ -18,7 +18,7 @@ class Area():
     getListElement():
         Return the list of elements designing the area.
     getSurface():
-        Return the surface of an element
+        Return the surface of the area
     """
     def __init__(self,ListWalls):
         self.__ListWalls=ListWalls
@@ -39,7 +39,7 @@ class Area():
         Returns
         -------
         TYPE Float
-            return the surface of an area
+            return the surface of the area
         '''
         pass
         

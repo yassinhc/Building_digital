@@ -8,8 +8,25 @@ import numpy as np
 from math import sqrt
 
 class Patio(ElementaryArea): #4 murs d'angles qqc
+    """
+    A class to represent a Patio.
+    ...
+    Attributes
+    ----------
+    listWall : list of Walls
+        The list of walls disigning the patio
+    
+    Methods
+    -------
+    getListElement():
+        Return the list of elements designing the patio.
+    getSurface():
+        Return the surface of the patio
+    getAngle():
+        Return the list of angles between each two wall contiguous
+    """
 
-    def getAngle(self): #retourne une liste des angles entre chaque mur contigus , on suppose les murs triés selon leur contiguité
+    def getAngle(self): # we suppose Walls are tried by their contiguity
         '''
         Returns
         -------
@@ -25,6 +42,12 @@ class Patio(ElementaryArea): #4 murs d'angles qqc
         return angles
     
     def getSurface(self): #Bretschweider formula
+        '''
+        Returns
+        -------
+        TYPE Float
+            return the surface of the corridor
+        '''
         L=[i.getLength() for i in self.getListWalls()]
         a,b,c,d=L[0],L[1],L[2],L[3]
         s=(a+b+c+d)/2
