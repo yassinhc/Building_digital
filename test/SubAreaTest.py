@@ -78,6 +78,16 @@ class Test_SubArea(unittest.TestCase):
         self.subArea.addArea(self.room)
         self.assertEqual(self.subArea.getListArea(),[self.room])
         self.assertEqual(self.subArea.getSurface(),self.room.getSurface())
+
+    def test_get_list_elements(self):
+        list_elem = self.subArea.getListElements()
+        self.assertEqual([], list_elem)
+
+
+    def test_nb_elements(self):
+        nb_elem = self.subArea.getNbElements()
+        self.assertEqual(0, nb_elem)
+
         
     
 if __name__ == '__main__':

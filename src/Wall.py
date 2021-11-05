@@ -52,6 +52,7 @@ class Wall(Element):
         self.__listDoor=[]
         self.__listCanBeContain=[[self.getCoordinates()[0],self.getCoordinates()[1]]]
         self.__vector=self.getCoordinates()[0].getVector(self.getCoordinates()[1]) #vecteur associé au mur
+
      
     def getVector(self):
         '''
@@ -150,7 +151,7 @@ class Wall(Element):
         None. (add door on the wall if possible)
 
         '''
-        if (door not in self.listDoor) and (self.listContainAfterAddingElement(door)):
+        if (door not in self.__listDoor) and (self.listContainAfterAddingElement(door)):
             self.__listDoor.append(door)
         
     def getListWindow(self):

@@ -1,11 +1,9 @@
+import unittest
 
 import sys
 sys.path.append('..')
 
 from src import Building
-
-import unittest
-
 
 
 class Test_Building(unittest.TestCase):

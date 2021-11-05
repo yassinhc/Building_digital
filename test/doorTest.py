@@ -9,7 +9,7 @@ sys.path.append('..')
 import src.door as door
 import src.coordinate as Coordinate
 
-from elementTest import ElementTest
+from test.elementTest import ElementTest
 
 
 class Test_Door(ElementTest,unittest.TestCase):

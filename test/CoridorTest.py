@@ -9,7 +9,7 @@ sys.path.append('..')
 import src.coridor as Corridor
 import src.Wall as Wall
 import src.coordinate as Coordinate
-from areaTest import AreaTest
+from test.areaTest import AreaTest
 
 
 class Test_Coridor(AreaTest,unittest.TestCase):
@@ -29,6 +29,7 @@ class Test_Coridor(AreaTest,unittest.TestCase):
         
     def test_getSurface(self):
         pass
+    
     def test_surface_square(self):
         surface = self.area.getSurface()
         self.assertEqual(surface, 50)
@@ -43,6 +44,7 @@ class Test_Coridor(AreaTest,unittest.TestCase):
         area = Corridor.Corridor((w1,w2))
         surface = area.getSurface()
         self.assertEqual(surface,32)
+    
     def test_getListWalls(self):
         self.assertEqual(self.area.getListWalls(),List_Walls)
         

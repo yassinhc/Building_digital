@@ -8,10 +8,9 @@ sys.path.append('..')
 
 import src.Wall as Wall
 import src.coordinate as Coordinate
-import src.door as Door
 import src.window as Window
 
-from elementTest import ElementTest
+from test.elementTest import ElementTest
 
 
 class Test_Wall(ElementTest,unittest.TestCase):
@@ -68,9 +67,8 @@ class Test_Wall(ElementTest,unittest.TestCase):
         self.element.addWindow(window)
         self.assertEqual(self.element.getListWindow(),[window])
         self.assertEqual(self.element.getListCanBeContain(),[[self.element.getCoordinates()[0],c3],[c4,self.element.getCoordinates()[1]]])
-        c33 = Coordinate.Coordinate(1,0)
-        c44 = Coordinate.Coordinate(5,0)
         window1 = Window.Window((c3,c4))
+        self.element.addWindow(window1)
         self.assertEqual(self.element.getListWindow(),[window])
     
         

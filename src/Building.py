@@ -20,7 +20,7 @@ class Building():
     def __init__(self,listFloor):
     
         self.__listFloor= listFloor
-        
+      
 
     def getLenFloor(self):
         """
@@ -29,7 +29,6 @@ class Building():
         -------
         TYPE Integer
             Return the number of floors in the building.
-
         """
         return len(self.__listFloor)
          
@@ -44,9 +43,9 @@ class Building():
         """
         return self.__listFloor
     
+    
     def addFloor(self,floor):
         """
-    
         Parameters
         ----------
         floor : Floor
@@ -59,3 +58,6 @@ class Building():
         """
         if floor not in self.getListFloor():
             self.__listFloor.append(floor)
+
+
+            

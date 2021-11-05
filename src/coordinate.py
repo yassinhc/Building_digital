@@ -1,5 +1,4 @@
 from math import sqrt
-
 import numpy as np
 
 class Coordinate():
@@ -67,6 +66,7 @@ class Coordinate():
         X=coordinate.getx()-self.getx()
         Y=coordinate.gety()-self.gety()
         return(np.array([X,Y]))
+    
     
     def getLength(self,coordinate):
         '''

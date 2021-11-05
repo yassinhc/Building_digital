@@ -9,7 +9,7 @@ sys.path.append('..')
 import src.window as window
 import src.coordinate as Coordinate
 
-from elementTest import ElementTest
+from test.elementTest import ElementTest
 
 
 class Test_Wall(ElementTest,unittest.TestCase):

@@ -1,7 +1,6 @@
 from abc import ABC
 
 
-
 class Element(ABC):
     """
     A class to represent a Element.
@@ -41,4 +40,4 @@ class Element(ABC):
         '''
         return self.getCoordinates()[0].getLength(self.getCoordinates()[1])
          
-        
+   

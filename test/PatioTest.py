@@ -8,11 +8,9 @@ sys.path.append('..')
 
 import src.patio as Patio
 import src.Wall as Wall
-import src.window as window
-import src.door as door
+
 import src.coordinate as Coordinate
-import src.Area as Area
-from areaTest import AreaTest
+from test.areaTest import AreaTest
 
 
 class Test_Patio(AreaTest,unittest.TestCase):
