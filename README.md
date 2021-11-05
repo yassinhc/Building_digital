@@ -13,7 +13,7 @@ In order to run the project, you need to install `numpy` and `matplotlib`:
 	$ pip3 install matplotlib  
 
 
-## How to recover BUILDING_DIGITAL/ on github? :  
+## Recovering the BUILDING_DIGITAL project from github:  
 
 Create a directory :   
 
@@ -32,7 +32,7 @@ Pull changes from the remote repository :
 
 	$ git pull     
 
-## How to run the tests?
+## Running the tests
 
 To run the test of *src* classes you should be in the main directory and execute the following command :
 
@@ -69,6 +69,10 @@ This folder contains the following classes :
 * `Wall*` : can contain the following Elements: 
 * `Door` : an element class to define a door
 * `Window` : an element class to define a window
+
+Here is the UML diagram of the classes used in this project : 
+
+<img src="https://github.com/yassinhc/Building_digital/blob/main/UML_diagram.png" width=80%>
 
 ### The ***test*** directory
 This folder is create to assert the true work of our src classes
