@@ -13,7 +13,7 @@ In order to run the project, you need to install `numpy` and `matplotlib`:
 	$ pip3 install matplotlib  
 
 
-## How to recover BUILDING_DIGITAL/ on github? :  
+## Recovering the BUILDING_DIGITAL project from github:  
 
 Create a directory :   
 
@@ -32,7 +32,7 @@ Pull changes from the remote repository :
 
 	$ git pull     
 
-## How to run the tests?
+## Running the tests
 
 To run the test of *src* classes you should be in the main directory and execute the following command :
 
