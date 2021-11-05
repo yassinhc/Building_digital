@@ -70,6 +70,10 @@ This folder contains the following classes :
 * `Door` : an element class to define a door
 * `Window` : an element class to define a window
 
+Here is the UML diagram of the classes used in this project : 
+
+<img src="https://github.com/yassinhc/Building_digital/blob/main/UML_diagram.png" width=80%>
+
 ### The ***test*** directory
 This folder is create to assert the true work of our src classes
 
