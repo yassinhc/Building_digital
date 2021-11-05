@@ -1,5 +1,11 @@
 # Digital Twin for Buildings
 
+## Introduction 
+
+This project consists of a digital twin for buildings. It can be summarized as an application that offers a virtual representation mirroring any physical elements of a building (e.g., wall, door, floor), which are then composed to organize indoor areas (e.g., room, patio, corridor). The digital twin is expected to live with the building—i.e., if new offices are designed, the digital twin is update accordingly.
+
+This digital twin can then serve different purposes. For instance, it can be visited to draw it on a map. It can also serve to track a visitor whenever they enter an office at a given time. In that case, the office will keep track of the movements of visitors in order to maintain some statistics (e.g., occupation of the office along a given period of the day).
+
 ## Prerequisites 
 You need to install `numpy` and `matplotlib`
 
