@@ -11,6 +11,7 @@ class SubArea(Area):
         def __init__(self,listArea):
             self.__listArea=listArea
             self.__res=0
+            self.__listElements=[]
             super().__init__([])
         
         def getListArea(self):
@@ -27,4 +28,9 @@ class SubArea(Area):
         def getSurface(self):
             return self.__res
         
-                
+        def getListElements(self):
+            return self.__listElements
+        
+        def addElement(self,listelement):
+            if listelement not in self.getListElements():
+                self.__listElements.append([listelement])
