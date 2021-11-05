@@ -7,13 +7,13 @@ This project consists of a digital twin for buildings. It can be summarized as a
 This digital twin can then serve different purposes. For instance, it can be visited to draw it on a map. It can also serve to track a visitor whenever they enter an office at a given time. In that case, the office will keep track of the movements of visitors in order to maintain some statistics (e.g., occupation of the office along a given period of the day).
 
 ## Prerequisites 
-You need to install `numpy` and `matplotlib`
+In order to run the project, you need to install `numpy` and `matplotlib`:
 
 	$ pip3 install numpy  
 	$ pip3 install matplotlib  
 
 
-## How to recover BUILDING_DIGITAL/ on github :  
+## How to recover BUILDING_DIGITAL/ on github? :  
 
 Create a directory :   
 
@@ -28,18 +28,17 @@ Link to our git :
 	$ cd Building_digital   
 
 
-Recover tp-hanoi :   
-
+Pull changes from the remote repository :   
 
 	$ git pull     
 
-## How to run the test
+## How to run the tests?
 
-To run the test of src classes you should be in the main directory:
+To run the test of *src* classes you should be in the main directory and execute the following command :
 
     $ python3 -m unittest test/*
 
-To run the test of build_map you should:
+To run the tests associated to `building_map` directory you should run the commands :
 
     $ cd building_map/
     $python3 -m unittest tests_library/*
@@ -53,7 +52,7 @@ The repository comprises of:
 - `main.py` file runs a simulation on an example of a building. 
 
 
-## Scope of Functionalities
+## Scope of functionalities
 
 ### The ***src*** directory
 
